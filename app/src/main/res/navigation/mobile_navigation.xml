@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.mycloset.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_addPage"
+        android:name="com.example.mycloset.ui.addPage.addPageFragment"
+        android:label="@string/add_newItem" >
+        <action
+            android:id="@+id/action_navigation_addPage_to_navigation_addnewItem"
+            app:destination="@id/navigation_addnewItem" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_tags"
+        android:name="com.example.mycloset.ui.tags.TagsFragment"
+        android:label="@string/title_tags"
+        tools:layout="@layout/fragment_tags" />
+    <fragment
+        android:id="@+id/navigation_addnewItem"
+        android:name="com.example.mycloset.ui.addnewitem.addNewItemFragment"
+        android:label="addNewItemFragment" >
+        <action
+            android:id="@+id/action_navigation_addnewItem_to_navigation_addPage"
+            app:destination="@id/navigation_addPage" />
+    </fragment>
+</navigation>
