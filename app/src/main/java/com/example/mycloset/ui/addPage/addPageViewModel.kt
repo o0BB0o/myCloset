@@ -10,4 +10,5 @@ class addPageViewModel : ViewModel() {
         value = "What you wearing today?"
     }
     val text: LiveData<String> = _text
+    val temp: LiveData<List<String>> = MutableLiveData(listOf("Top","Bottom","Shoes","Accessory"))
 }

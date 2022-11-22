@@ -7,9 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import com.example.mycloset.R
 import com.example.mycloset.databinding.FragmentHomeBinding
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
+    companion object {
+        var categoryPassed = 0
+    }
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -24,14 +30,34 @@ class HomeFragment : Fragment() {
     ): View {
         val homeViewModel =
                 ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
         val textView: TextView = binding.textHome
+        binding.imageButton.setOnClickListener{
+            categoryPassed = 1
+            Navigation.findNavController(root).navigate(R.id.action_navigation_home_to_closetList)
+        }
+        binding.imageButton2.setOnClickListener{
+            categoryPassed = 2
+            Navigation.findNavController(root).navigate(R.id.action_navigation_home_to_closetList)
+        }
+        binding.imageButton3.setOnClickListener{
+            categoryPassed = 3
+            Navigation.findNavController(root).navigate(R.id.action_navigation_home_to_closetList)
+        }
+        binding.imageButton4.setOnClickListener{
+            categoryPassed = 4
+            Navigation.findNavController(root).navigate(R.id.action_navigation_home_to_closetList)
+        }
+        // TODO REPALCE THE ICONS
+        binding.imageButton.setImageResource(R.drawable.ic_baseline_camera_alt_48)
+        binding.imageButton2.setImageResource(R.drawable.ic_baseline_camera_alt_48)
+        binding.imageButton3.setImageResource(R.drawable.ic_baseline_camera_alt_48)
+        binding.imageButton4.setImageResource(R.drawable.ic_baseline_camera_alt_48)
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
         return root
     }
 

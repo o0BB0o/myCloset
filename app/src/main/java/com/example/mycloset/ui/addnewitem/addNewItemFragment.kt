@@ -8,26 +8,29 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.mycloset.R
 import com.example.mycloset.database.Items
 import java.io.File
 import java.util.*
 import com.squareup.picasso.Picasso
-import com.example.mycloset.databinding.FragmentAddpageBinding
-import com.example.mycloset.ui.addPage.addPageViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_addnewitem.*
 
 
-class addNewItemFragment : Fragment(), AdapterView.OnItemSelectedListener {
+class addNewItemFragment : Fragment(), OnItemSelectedListener {
 
     companion object {
         fun newInstance(listener: AddItemListener) = addNewItemFragment().apply {
@@ -61,7 +64,8 @@ class addNewItemFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val navView = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+        navView.visibility = View.GONE
         photoFile = File(context?.applicationContext?.filesDir, "IMG_$uuid.jpg")
         photoUri = FileProvider.getUriForFile(
             requireActivity(),
@@ -71,7 +75,6 @@ class addNewItemFragment : Fragment(), AdapterView.OnItemSelectedListener {
         new_category.onItemSelectedListener=this
         add_btn.setOnClickListener {
             onDone()
-            //dismiss()
         }
         launchCam.apply {
             val pm = requireActivity().packageManager
@@ -81,7 +84,7 @@ class addNewItemFragment : Fragment(), AdapterView.OnItemSelectedListener {
             if (resolveActivity == null || !cameraPermission()) {
                 isEnabled = false
             }
-            setOnClickListener {
+            launchCam.setOnClickListener {
                 captureImage.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
                 val cameraActivities =
                     pm.queryIntentActivities(captureImage, PackageManager.MATCH_DEFAULT_ONLY)
@@ -107,9 +110,10 @@ class addNewItemFragment : Fragment(), AdapterView.OnItemSelectedListener {
         val itemName = new_itemname.text.toString()
         newItem.name = itemName
         newItem.category = selected
-        newItem.price = newitem_price.getText().toString().toDouble();
-        vm.insert(newItem)
+        newItem.price = newitem_price.getText().toString().toDouble()
         newItem.uuid = uuid
+        vm.insert(newItem)
+        findNavController().navigate(R.id.action_navigation_addnewItem_to_navigation_addPage3)
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -133,7 +137,6 @@ class addNewItemFragment : Fragment(), AdapterView.OnItemSelectedListener {
                     photoUri,
                     Intent.FLAG_GRANT_WRITE_URI_PERMISSION
                 )
-
                 if (photoFile.exists()) {
                     picasso.load(photoUri)
                         .fit()
@@ -142,5 +145,19 @@ class addNewItemFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item:MenuItem):Boolean {
+        return when(item.itemId){
+            android.R.id.home ->{
+                Toast.makeText(context, "ggg", 1).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
     }
 }
