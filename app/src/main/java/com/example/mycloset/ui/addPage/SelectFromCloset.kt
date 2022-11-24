@@ -1,11 +1,12 @@
-package com.example.mycloset.ui.home
+package com.example.mycloset.ui.addPage
 
+import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -13,24 +14,25 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycloset.R
 import com.example.mycloset.database.Items
-import com.example.mycloset.databinding.FragmentTagsBinding
-import kotlinx.android.synthetic.main.card_item.*
-import kotlinx.android.synthetic.main.card_item.view.*
-import java.io.File
+import com.example.mycloset.ui.home.ClosetList
+import com.example.mycloset.ui.home.ClosetListViewModel
+import com.example.mycloset.ui.home.DetailFragment
+import com.example.mycloset.ui.home.DetailViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.card_item.view.*
+import kotlinx.android.synthetic.main.fragment_detail.*
+import java.io.File
 
-class ClosetList : Fragment() {
+class SelectFromCloset : Fragment() {
     private val picasso = Picasso.get()
-
-    companion object {
-        fun newInstance() = ClosetList()
-        var itemPassed = Items()
-    }
-
-    private lateinit var viewModel: ClosetListViewModel
+    private lateinit var viewModel: SelectFromClosetViewModel
     private lateinit var itemsRecycler: RecyclerView
     private lateinit var adapter: ItemsAdapter
+    companion object {
+        fun newInstance() = DetailFragment()
+        var daily_itemPassed = mutableListOf<Items>(Items(),Items(),Items(),Items())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +43,7 @@ class ClosetList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ClosetListViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(SelectFromClosetViewModel::class.java)
         adapter=ItemsAdapter()
         itemsRecycler = view.findViewById(R.id.items_view)
         itemsRecycler.layoutManager = LinearLayoutManager(context)
@@ -50,6 +52,7 @@ class ClosetList : Fragment() {
             adapter.updateWords(it)
         })
     }
+
 
     private inner class ItemsViewHolder(view: View) : RecyclerView.ViewHolder(view),View.OnClickListener {
         private lateinit var items: Items
@@ -62,8 +65,9 @@ class ClosetList : Fragment() {
         }
 
         override fun onClick(v: View?) {
-            itemPassed = items
-            nav_host_fragment_activity_main.findNavController().navigate(R.id.action_closetList_to_detailFragment)
+            // TODO
+            daily_itemPassed[addPageFragment.add_categoryPassed-1] = items
+            nav_host_fragment_activity_main.findNavController().navigate(R.id.action_selectFromCloset_to_navigation_addPage)
         }
 
         fun bind(items: Items) {
@@ -100,10 +104,6 @@ class ClosetList : Fragment() {
         fun getWordAtPosition(position: Int): Items {
             return items[position]
         }
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick()
     }
 
 }

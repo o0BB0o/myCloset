@@ -4,9 +4,10 @@
     <string name="title_addPage">AddItem</string>
     <string name="title_tags">Tags</string>
     <string name="add_newItem">AddNewItem</string>
+    <string name="alert">Alert</string>
+    <string name="deleted_alert">Successfully deleted: %s</string>
 
     <string-array name="categories">
-        <item>N/A</item>
         <item>Top</item>
         <item>Bottom</item>
         <item>Accessory</item>

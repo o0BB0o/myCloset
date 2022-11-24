@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_navigation_addPage_to_navigation_addnewItem"
             app:destination="@id/navigation_addnewItem" />
+        <action
+            android:id="@+id/action_navigation_addPage_to_selectFromCloset"
+            app:destination="@id/selectFromCloset" />
     </fragment>
 
     <fragment
@@ -32,7 +35,7 @@
     <fragment
         android:id="@+id/navigation_addnewItem"
         android:name="com.example.mycloset.ui.addnewitem.addNewItemFragment"
-        android:label="addNewItemFragment" >
+        android:label="Add New Item">
         <action
             android:id="@+id/action_navigation_addnewItem_to_navigation_addPage3"
             app:destination="@id/navigation_addPage" />
@@ -40,10 +43,25 @@
     <fragment
         android:id="@+id/closetList"
         android:name="com.example.mycloset.ui.home.ClosetList"
-        android:label="fragment_closet_list"
-        tools:layout="@layout/fragment_closet_list" >
+        android:label="Your Closet"
+        tools:layout="@layout/fragment_closet_list">
         <action
             android:id="@+id/action_closetList_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_closetList_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.mycloset.ui.home.DetailFragment"
+        android:label="DetailFragment" />
+    <fragment
+        android:id="@+id/selectFromCloset"
+        android:name="com.example.mycloset.ui.addPage.SelectFromCloset"
+        android:label="SelectFromCloset" >
+        <action
+            android:id="@+id/action_selectFromCloset_to_navigation_addPage"
+            app:destination="@id/navigation_addPage" />
     </fragment>
 </navigation>

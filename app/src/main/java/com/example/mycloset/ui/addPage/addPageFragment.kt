@@ -10,23 +10,33 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycloset.R
 import com.example.mycloset.databinding.FragmentAddpageBinding
+import com.example.mycloset.ui.addPage.SelectFromCloset.Companion.daily_itemPassed
+import com.example.mycloset.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.wearingtoday_items.view.*
+import java.io.File
 
 
 class addPageFragment : Fragment() {
-
+    private val picasso = Picasso.get()
     private lateinit var itemsRecycler: RecyclerView
     private lateinit var adapter: ItemsAdapter
-
+    private val theMap = mapOf("Top" to 1, "Bottom" to 3, "Shoes" to 4, "Accessory" to 2)
     private var _binding: FragmentAddpageBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    companion object {
+        var add_categoryPassed = 0
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -65,17 +75,21 @@ class addPageFragment : Fragment() {
         private val itemText: TextView = view.tempText
 
         init {
-            //TODO SELECT AN ITEM AND REPLACE THE IMG
             itemImageButton.setImageResource(R.drawable.ic_baseline_insert_drive_file_130)
-            itemImageButton.setOnClickListener{
-                Toast.makeText(context, "yeah", 1).show()
-            }
         }
 
         fun bind(s: String) {
-            // TODO SAME AS ABOVE
-            this.items = s
+            items = s
             itemText.text = s
+            itemImageButton.setOnClickListener{
+                add_categoryPassed = theMap.get(s)!!
+                nav_host_fragment_activity_main.findNavController().navigate(R.id.action_navigation_addPage_to_selectFromCloset)
+            }
+            if(File(context?.filesDir, daily_itemPassed[theMap.get(s)!!-1].photoFileName).exists()){
+                picasso.load(File(context?.filesDir, daily_itemPassed[theMap.get(s)!!-1].photoFileName))
+                    .resize(300,300)
+                    .into(itemImageButton)
+            }
         }
     }
 

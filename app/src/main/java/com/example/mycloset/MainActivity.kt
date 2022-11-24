@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.mycloset.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var navHostFragment: NavHostFragment
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_addPage, R.id.navigation_tags))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
     }
 
     override fun onSupportNavigateUp(): Boolean =

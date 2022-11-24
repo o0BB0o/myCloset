@@ -17,9 +17,9 @@
 
     <ImageButton
         android:id="@+id/itemButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_weight="1"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/ic_baseline_insert_drive_file_130" />
 
 </LinearLayout>
