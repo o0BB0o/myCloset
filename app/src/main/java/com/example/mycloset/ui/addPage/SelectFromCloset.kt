@@ -67,7 +67,7 @@ class SelectFromCloset : Fragment() {
         override fun onClick(v: View?) {
             // TODO
             daily_itemPassed[addPageFragment.add_categoryPassed-1] = items
-            nav_host_fragment_activity_main.findNavController().navigate(R.id.action_selectFromCloset_to_navigation_addPage)
+            nav_host_fragment_activity_main.findNavController().navigateUp()
         }
 
         fun bind(items: Items) {

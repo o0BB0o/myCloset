@@ -1,12 +1,17 @@
 package com.example.mycloset.ui.home
 
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.mycloset.MainActivity
 import com.example.mycloset.R
 import com.example.mycloset.database.ItemsRepository
 import com.example.mycloset.ui.home.ClosetList.Companion.itemPassed
@@ -14,6 +19,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detail.*
 import java.io.File
 import com.example.mycloset.database.Items
+import kotlinx.android.synthetic.main.activity_main.*
 
 class DetailFragment : Fragment() {
     private val picasso = Picasso.get()
@@ -57,9 +63,17 @@ class DetailFragment : Fragment() {
         with(builder) {
             setTitle(R.string.alert)
             setMessage(msg)
-            setPositiveButton("OK", null)
+            setPositiveButton("OK", DialogInterface.OnClickListener(function = onDelete))
             show()
         }
     }
 
+    val onDelete = {dialog:DialogInterface, which: Int ->
+        findNavController().navigateUp()
+        onDestroyView()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
 }

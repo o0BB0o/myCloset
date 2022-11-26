@@ -113,7 +113,7 @@ class addNewItemFragment : Fragment(), OnItemSelectedListener {
         newItem.price = newitem_price.getText().toString().toDouble()
         newItem.uuid = uuid
         vm.insert(newItem)
-        findNavController().navigate(R.id.action_navigation_addnewItem_to_navigation_addPage3)
+        findNavController().navigateUp()
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {

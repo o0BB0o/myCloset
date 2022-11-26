@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycloset.R
+import com.example.mycloset.database.Items
 import com.example.mycloset.databinding.FragmentAddpageBinding
 import com.example.mycloset.ui.addPage.SelectFromCloset.Companion.daily_itemPassed
 import com.example.mycloset.ui.home.HomeFragment
@@ -50,6 +51,9 @@ class addPageFragment : Fragment() {
         val root: View = binding.root
         binding.addNewButton.setOnClickListener{
             Navigation.findNavController(root).navigate(R.id.action_navigation_addPage_to_navigation_addnewItem)
+        }
+        binding.finishDaily.setOnClickListener{
+            Navigation.findNavController(root).navigateUp()
         }
 
         val navView = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
@@ -115,6 +119,7 @@ class addPageFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        daily_itemPassed = mutableListOf(Items(), Items(), Items(), Items())
         _binding = null
     }
 }

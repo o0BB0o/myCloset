@@ -35,11 +35,7 @@
     <fragment
         android:id="@+id/navigation_addnewItem"
         android:name="com.example.mycloset.ui.addnewitem.addNewItemFragment"
-        android:label="Add New Item">
-        <action
-            android:id="@+id/action_navigation_addnewItem_to_navigation_addPage3"
-            app:destination="@id/navigation_addPage" />
-    </fragment>
+        android:label="Add New Item"/>
     <fragment
         android:id="@+id/closetList"
         android:name="com.example.mycloset.ui.home.ClosetList"
