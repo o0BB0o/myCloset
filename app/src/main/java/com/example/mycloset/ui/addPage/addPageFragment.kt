@@ -54,6 +54,7 @@ class addPageFragment : Fragment() {
         }
         binding.finishDaily.setOnClickListener{
             Navigation.findNavController(root).navigateUp()
+            Toast.makeText(context, "Added Daily Outfit!", 3).show()
         }
 
         val navView = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)

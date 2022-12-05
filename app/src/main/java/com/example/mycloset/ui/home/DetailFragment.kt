@@ -9,16 +9,20 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.mycloset.MainActivity
 import com.example.mycloset.R
+import com.example.mycloset.R.id.costAmount
 import com.example.mycloset.database.ItemsRepository
 import com.example.mycloset.ui.home.ClosetList.Companion.itemPassed
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detail.*
 import java.io.File
 import com.example.mycloset.database.Items
+import com.example.mycloset.ui.tags.TagsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class DetailFragment : Fragment() {
@@ -27,7 +31,6 @@ class DetailFragment : Fragment() {
     companion object {
         fun newInstance() = DetailFragment()
     }
-
     private lateinit var viewModel: DetailViewModel
 
     override fun onCreateView(
@@ -51,9 +54,16 @@ class DetailFragment : Fragment() {
                 .resize(350,350)
                 .into(detail_Img)
         }
+        costAmount.setText(itemPassed.price.toString())
+
         deleteButton.setOnClickListener{
             viewModel.deleteItem(itemPassed)
             itemDeletedAlert(itemPassed)
+        }
+
+        tagButton.setOnClickListener{
+            TagsFragment.lastItemTagged= itemPassed
+            Toast.makeText(context, "Item Tagged!", 3).show()
         }
     }
 

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView
         android:id="@+id/detail_Img"
         android:layout_width="350dp"
@@ -14,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25"
-        app:srcCompat="@drawable/other" />
+        app:srcCompat="@drawable/shirts" />
 
     <TextView
         android:id="@+id/costText"
@@ -55,11 +56,11 @@
 
     <ImageButton
         android:id="@+id/tagButton"
-        tools:layout_editor_absoluteY="448dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/detail_Img"
         app:layout_constraintEnd_toEndOf="@+id/detail_Img"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/costText"
         app:srcCompat="@drawable/ic_baseline_label_24" />
 

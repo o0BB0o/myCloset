@@ -6,6 +6,7 @@
     <string name="add_newItem">AddNewItem</string>
     <string name="alert">Alert</string>
     <string name="deleted_alert">Successfully deleted: %s</string>
+    <string name="closet_title">My Closet</string>
 
     <string-array name="categories">
         <item>Top</item>

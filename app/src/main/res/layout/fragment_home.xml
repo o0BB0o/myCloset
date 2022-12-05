@@ -4,50 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/img"
     tools:context=".ui.home.HomeFragment">
+
+    <TextView
+        android:id="@+id/closet_title"
+        android:layout_width="218dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="89dp"
+        android:fontFamily="monospace"
+        android:lineSpacingExtra="20sp"
+        android:text="@string/closet_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/orange_200"
+        android:textSize="40sp"
+        android:textStyle="bold|italic"
+        android:typeface="monospace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="87dp"
-        android:layout_height="94dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginEnd="14dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
         android:adjustViewBounds="true"
+        android:cropToPadding="true"
         android:paddingHorizontal="0dp"
         android:paddingVertical="0dp"
         android:scaleType="fitXY"
+        android:tag="top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        tools:src="@drawable/pants" />
+        app:layout_constraintVertical_bias="0.337"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:src="@drawable/homepage_shirts" />
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="158dp"
-        android:layout_height="226dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="20dp"
         android:adjustViewBounds="true"
+        android:cropToPadding="true"
         android:paddingHorizontal="0dp"
         android:paddingVertical="0dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.287"
-        tools:src="@drawable/other" />
+        app:layout_constraintVertical_bias="0.337"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:src="@drawable/homepage_pants" />
 
     <ImageButton
         android:id="@+id/imageButton3"
-        android:layout_width="88dp"
-        android:layout_height="157dp"
-        android:layout_marginStart="112dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="10dp"
         android:adjustViewBounds="true"
+        android:cropToPadding="true"
         android:paddingHorizontal="0dp"
         android:paddingVertical="0dp"
         android:scaleType="fitXY"
@@ -55,15 +80,17 @@
         app:layout_constraintEnd_toStartOf="@+id/imageButton4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        app:layout_constraintVertical_bias="0.141"
-        tools:src="@drawable/shoes" />
+        app:layout_constraintVertical_bias="0.302"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:src="@drawable/homepage_shoes" />
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="164dp"
-        android:layout_height="265dp"
-        android:layout_marginEnd="45dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="20dp"
         android:adjustViewBounds="true"
+        android:cropToPadding="true"
         android:paddingHorizontal="0dp"
         android:paddingVertical="0dp"
         android:scaleType="fitXY"
@@ -71,7 +98,65 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButton3"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:layout_constraintVertical_bias="0.568"
-        tools:src="@drawable/shirts" />
+        app:layout_constraintVertical_bias="0.302"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:src="@drawable/homepage_jacket" />
+
+    <TextView
+        android:id="@+id/top_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Top"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.252"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/closet_title"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/bottom_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bottom"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.751"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/closet_title"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/shoes_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shoes"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/accessory_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accessory"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class TagsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Tags Fragment"
+        value = "Don't forget to donate this!"
     }
     val text: LiveData<String> = _text
 }
